@@ -1,0 +1,36 @@
+<div>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Live Corona Virus Tracker App!</a>
+  </nav>
+  
+  <div class="style1">
+    <div>
+      <b><label>Country:</label></b>&nbsp;
+      <select class="form-control-md style2" (change)="getCountry($event.target.value)">
+        <option *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
+      </select>
+    </div>
+    <br /><br />
+    <!-- <button (click)="getCoronaData()">Get CoronaVirus Data</button><br/>
+    -->
+    <div class="style3">
+      <div class="card bg-info text-white">
+        <b>
+          <div class="card-body">Total Confirmed Cases: {{confirmed}}</div>
+        </b>
+      </div><br />
+      <div class="card bg-success text-white">
+        <b>
+          <div class="card-body">Total Recovered Cases: {{recovered}}</div>
+        </b>
+      </div><br />
+      <div class="card bg-danger text-white">
+        <b>
+          <div class="card-body">Total Death Cases: {{deaths}}</div>
+        </b>
+      </div>
+
+    </div>
+  </div>
+
+</div>
