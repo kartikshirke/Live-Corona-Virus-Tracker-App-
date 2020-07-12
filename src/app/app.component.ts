@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoronaService} from './services/corona.service'
+import { CoronaService } from './services/corona.service'
 
 @Component({
   selector: 'app-root',
@@ -8,38 +8,38 @@ import { CoronaService} from './services/corona.service'
 })
 export class AppComponent {
 
-  countries:any
-  country:any
-  confirmed:Number
-  recovered:Number
-  deaths:Number
-  constructor(private corona: CoronaService){}
-  ngOnInit(){
-    this.corona.getCountries().subscribe((data)=>{
-      console.log('data',data)
-      this.countries=data
+  worldConfirmed: number
+  worldRecovered: number
+  worldDeaths: number
+  countries: any
+  country: any
+  confirmed: Number
+  recovered: Number
+  deaths: Number
+  date:any
+
+  constructor(private corona: CoronaService) { }
+
+  ngOnInit() {
+    this.date=new Date();
+    this.corona.getCountries().subscribe((data) => {
+      this.countries = data.countries
+    })
+
+    this.corona.getWorldData().subscribe((data) => {
+      this.worldConfirmed = data.confirmed.value;
+      this.worldRecovered = data.recovered.value
+      this.worldDeaths = data.deaths.value
     })
   }
 
-// getCoronaData(){
-//   this.corona.getCoronaRealtimeData(this.country).subscribe((data)=>{
-//     console.log(data)
-//     let index=data.length -1;
-//     this.confirmed=data[index].Confirmed
-//     this.recovered=data[index].Recovered
-//     this.deaths=data[index].Deaths
-//   })
-// }
-
-getCountry(country:any){
-  this.country=country;
-  this.corona.getCoronaRealtimeData(this.country).subscribe((data)=>{
-    console.log(data)
-    let index=data.length -1;
-    this.confirmed=data[index].Confirmed
-    this.recovered=data[index].Recovered
-    this.deaths=data[index].Deaths
-  })
-}
+  getCountry(country: any) {
+    this.country = country;
+    this.corona.getCoronaRealtimeData(this.country).subscribe((data) => {
+      this.confirmed = data.confirmed.value
+      this.recovered = data.recovered.value
+      this.deaths = data.deaths.value
+    })
+  }
 
 }

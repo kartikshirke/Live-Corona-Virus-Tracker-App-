@@ -1,18 +1,42 @@
+
 <div>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Live Corona Virus Tracker App!</a>
+    <a class="navbar-brand" href="#">Live Coronavirus Tracker App!</a>
   </nav>
-  
+  <div class="container">
+    <div style="text-align: center;"><h2>World Wide Coronavirus Cases <p style="font-weight: 200;font-size: medium;">(as of {{date}})</p> </h2></div>
+       <div class="card-deck">
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+        <b><p class="card-text">Total CoronaVirus Cases</p>
+          <p class="card-text">{{worldConfirmed}}</p></b>
+        </div>
+      </div>
+      <div class="card bg-success">
+        <div class="card-body text-center">
+          <b><p class="card-text">Total Recovered CoronaVirus Cases</p>
+          <p class="card-text">{{worldRecovered}}</p></b>
+        </div>
+      </div>
+      <div class="card bg-danger">
+        <div class="card-body text-center">
+         <b> <p class="card-text">Total Recovered CoronaVirus Cases</p>
+          <p class="card-text">{{worldDeaths}}</p></b>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <br/>
+  <div style="text-align: center;"><h2>View Coronavirus Cases By Country</h2></div>
   <div class="style1">
     <div>
       <b><label>Country:</label></b>&nbsp;
       <select class="form-control-md style2" (change)="getCountry($event.target.value)">
-        <option *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
+        <option value="select country" selected>Select Country...</option> 
+        <option *ngFor="let country of countries" value={{country.name}}>{{country.name}}</option>
       </select>
     </div>
-    <br /><br />
-    <!-- <button (click)="getCoronaData()">Get CoronaVirus Data</button><br/>
-    -->
+    <br />
     <div class="style3">
       <div class="card bg-info text-white">
         <b>
