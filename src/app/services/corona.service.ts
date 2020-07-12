@@ -10,12 +10,18 @@ export class CoronaService {
   constructor(private http:HttpClient) { }
 
   getCountries():Observable<any>{
-    const url="https://api.covid19api.com/countries"
+    const url="https://covid19.mathdro.id/api/countries"
     return this.http.get<any>(url)
   }
 
   getCoronaRealtimeData(country):Observable<any>{
-    const url="https://api.covid19api.com/total/dayone/country/" + country
+    // const url ="https://covid19.mathdro.id/api/countries/[country]"
+    const url="https://covid19.mathdro.id/api/countries/" + country
+    return this.http.get<any>(url)
+  }
+
+  getWorldData():Observable<any>{
+    const url="https://covid19.mathdro.id/api/"
     return this.http.get<any>(url)
   }
 }
